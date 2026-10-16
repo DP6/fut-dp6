@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fut dp6 — Convocação oficial</title>
+<meta name="description" content="Você está convocado para o Fut dp6. Participe! Não seja contra o engajamento!">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fut dp6 — Você está convocado">
+<meta property="og:description" content="Participe! Não seja contra o engajamento! Veja quanto falta para a bola rolar.">
+<meta name="theme-color" content="#1D1D1B">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
+<style>
+  /* Tokens do DP6 Design System (DP6-Design-System.md) */
+  :root {
+    --dp6-amarelo: #FFB302;
+    --dp6-preto: #1D1D1B;
+    --dp6-branco: #FFFFFF;
+    --amarelo-600: #E39C00;
+    --amarelo-700: #B87E00;
+    --neutral-300: #C4C7CB;
+    --neutral-700: #33373C;
+    --neutral-800: #262728;
+    --neutral-950: #131312;
+
+    --font-primary: "Ubuntu", "Verdana", "Segoe UI", sans-serif;
+    --tracking-eyebrow: .28em;
+    --tracking-label: .12em;
+    --tracking-display: -.015em;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --gutter: 24px;
+    --focus-ring: 0 0 0 3px rgb(255 179 2 / .45);
+    --ease: cubic-bezier(.2, .6, .2, 1);
+    --fast: 140ms;
+  }
+  @media (min-width: 900px) { :root { --gutter: 64px; } }
+  @media (prefers-reduced-motion: reduce) { :root { --fast: 0ms; } }
+
+  * { box-sizing: border-box; margin: 0; }
+  html { color-scheme: dark; }
+  body {
+    min-height: 100vh; min-height: 100dvh;
+    display: flex; flex-direction: column;
+    font: 400 16px/1.65 var(--font-primary);
+    color: var(--dp6-branco);
+    background: var(--dp6-preto);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--dp6-amarelo); color: var(--dp6-preto); }
+
+  .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding-inline: var(--gutter); }
+
+  header { height: 104px; display: flex; align-items: center; }
+  header img { display: block; width: 150px; height: auto; }
+
+  /* Grafismo: três barras ascendentes, em marca d'água sangrando no canto */
+  .grafismo {
+    position: absolute; right: -40px; bottom: -40px;
+    display: flex; align-items: flex-end; gap: 28px;
+    opacity: .1; pointer-events: none;
+  }
+  .grafismo i { display: block; width: 64px; background: var(--dp6-amarelo); transform: skewX(-14deg); }
+  .grafismo i:nth-child(1) { height: 200px; }
+  .grafismo i:nth-child(2) { height: 340px; }
+  .grafismo i:nth-child(3) { height: 480px; }
+  @media (max-width: 600px) { .grafismo { transform: scale(.6); transform-origin: bottom right; } }
+
+  .hero { position: relative; flex: 1; overflow: hidden; padding-block: 40px 72px; }
+  .hero .wrap { position: relative; z-index: 1; }
+
+  .rule { display: block; width: 120px; height: 2px; background: var(--dp6-amarelo); border: 0; margin-bottom: 20px; }
+  .eyebrow {
+    font-size: 12px; text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow); color: var(--neutral-300);
+  }
+  h1 {
+    margin-top: 12px;
+    font-weight: 300; font-size: clamp(2.1rem, 7vw, 3.8rem);
+    line-height: 1.05; letter-spacing: var(--tracking-display);
+    max-width: 20ch;
+  }
+
+  .info { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 24px 56px; }
+  .info dt {
+    font-size: 12px; text-transform: uppercase;
+    letter-spacing: var(--tracking-eyebrow); color: var(--neutral-300);
+  }
+  .info dd { margin-top: 4px; font-weight: 500; font-size: 1.25rem; line-height: 1.3; }
+  .info dd::first-letter { text-transform: uppercase; }
+
+  .clock {
+    margin-top: 40px; max-width: 720px;
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;
+  }
+  .unit {
+    background: var(--neutral-800);
+    border: 1px solid var(--neutral-700);
+    border-top: 2px solid var(--dp6-amarelo);
+    border-radius: var(--radius-md);
+    padding: clamp(12px, 3vw, 24px) 4px;
+    text-align: center;
+  }
+  .unit .n {
+    display: block; font-weight: 700; line-height: 1.05;
+    font-size: clamp(1.75rem, 8vw, 3.8rem);
+    font-variant-numeric: tabular-nums;
+  }
+  .unit .l {
+    display: block; margin-top: 8px;
+    font-size: clamp(10px, 2.4vw, 12px); text-transform: uppercase;
+    letter-spacing: var(--tracking-label); color: var(--neutral-300);
+  }
+  #status { margin-top: 16px; min-height: 1.65em; color: var(--neutral-300); }
+
+  /* Faixa amarela: momento de statement (guideline: CTA band) */
+  .statement { background: var(--dp6-amarelo); color: var(--dp6-preto); padding-block: 56px; }
+  .statement .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px 40px; }
+  .statement p {
+    font-weight: 500; font-size: clamp(1.6rem, 5vw, 2.6rem);
+    line-height: 1.15; letter-spacing: var(--tracking-display);
+    max-width: 22ch;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 24px;
+    font: 500 14px/1 var(--font-primary);
+    text-transform: uppercase; letter-spacing: var(--tracking-label);
+    text-decoration: none;
+    color: var(--dp6-branco); background: var(--dp6-preto);
+    border: 2px solid var(--dp6-preto); border-radius: var(--radius-sm);
+    transition: background-color var(--fast) var(--ease), border-color var(--fast) var(--ease), transform var(--fast) var(--ease);
+  }
+  .btn:hover { background: var(--neutral-800); border-color: var(--neutral-800); color: var(--dp6-branco); }
+  .btn:active { transform: scale(.98); }
+  .btn:focus-visible { outline: 3px solid var(--dp6-preto); outline-offset: 3px; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+
+  footer { background: var(--neutral-950); padding-block: 24px; font-size: 14px; color: var(--neutral-300); }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <img src="img/dp6-logo-branco-amarelo.png" width="150" height="69" alt="DP6">
+  </div>
+</header>
+
+<section class="hero">
+  <div class="grafismo" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <hr class="rule">
+    <p class="eyebrow">Convocação oficial</p>
+    <h1>Você está convocado para o Fut dp6.</h1>
+
+    <dl class="info">
+      <div><dt>Quando</dt><dd><span id="data-txt"></span> às <span id="hora-txt"></span></dd></div>
+      <div><dt>Onde</dt><dd id="local-txt"></dd></div>
+    </dl>
+
+    <p class="sr-only" id="sr-resumo" aria-live="polite"></p>
+    <div class="clock" aria-hidden="true">
+      <div class="unit"><span class="n" id="d">--</span><span class="l">dias</span></div>
+      <div class="unit"><span class="n" id="h">--</span><span class="l">horas</span></div>
+      <div class="unit"><span class="n" id="m">--</span><span class="l">min</span></div>
+      <div class="unit"><span class="n" id="s">--</span><span class="l">seg</span></div>
+    </div>
+    <p id="status"></p>
+  </div>
+</section>
+
+<section class="statement">
+  <div class="wrap">
+    <p>Participe! Não seja contra o engajamento!</p>
+    <a class="btn" id="btn-cal" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18M10 16h4M12 14v4"/></svg>
+      Colocar na agenda
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Ausência será anotada. Pela consciência.</div>
+</footer>
+
+<script>
+(function () {
+  // ===== CONFIG: ajuste aqui =====
+  var CONFIG = {
+    titulo: "Fut dp6",
+    inicio: "2026-12-11T18:00:00-03:00", // 11/12 às 18:00 (horário de Brasília)
+    duracaoHoras: 2,
+    local: "A definir"
+  };
+  // ===============================
+
+  var alvo = new Date(CONFIG.inicio);
+  var fim = new Date(alvo.getTime() + CONFIG.duracaoHoras * 3600e3);
+  var $ = function (id) { return document.getElementById(id); };
+  var pad = function (n) { return String(n).padStart(2, "0"); };
+
+  var tz = { timeZone: "America/Sao_Paulo" };
+  $("data-txt").textContent = alvo.toLocaleDateString("pt-BR", Object.assign({ weekday: "long", day: "numeric", month: "long" }, tz));
+  $("hora-txt").textContent = alvo.toLocaleTimeString("pt-BR", Object.assign({ hour: "2-digit", minute: "2-digit" }, tz)).replace(":00", "h").replace(":", "h");
+  $("local-txt").textContent = CONFIG.local;
+
+  var frases = [
+    "Quem não vem, o grupo lembra.",
+    "Joelho não é desculpa, é motivação.",
+    "O aquecimento é opcional. O pique, não.",
+    "Quem responde \"quem sabe\" já está escalado como reserva.",
+    "Chuteira na mochila desde já."
+  ];
+  var ultimaFrase = -1;
+
+  function zeros() { ["d", "h", "m", "s"].forEach(function (k) { $(k).textContent = "00"; }); }
+
+  function render() {
+    var agora = Date.now();
+    var diff = alvo.getTime() - agora;
+
+    if (diff > 0) {
+      var t = Math.floor(diff / 1000);
+      $("d").textContent = pad(Math.floor(t / 86400));
+      $("h").textContent = pad(Math.floor(t % 86400 / 3600));
+      $("m").textContent = pad(Math.floor(t % 3600 / 60));
+      $("s").textContent = pad(t % 60);
+      var idx = Math.floor(agora / 60000) % frases.length;
+      if (idx !== ultimaFrase) { ultimaFrase = idx; $("status").textContent = frases[idx]; }
+      $("sr-resumo").textContent = "Faltam " + Math.floor(t / 86400) + " dias para o Fut dp6.";
+    } else if (agora < fim.getTime()) {
+      zeros();
+      $("status").textContent = "A bola rolou. Corre pra quadra.";
+      $("sr-resumo").textContent = "A bola rolou. O Fut dp6 está acontecendo agora.";
+    } else {
+      zeros();
+      $("status").textContent = "Já rolou. Quem faltou, a gente comenta no próximo.";
+      $("sr-resumo").textContent = "O Fut dp6 já aconteceu.";
+    }
+  }
+  render();
+  setInterval(render, 1000);
+
+  // Google Agenda: abre o evento já preenchido, pronto para salvar
+  var utc = function (d) { return d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, ""); };
+  var detalhes = "Participe! Não seja contra o engajamento!";
+  if (/^https?:/.test(location.protocol)) detalhes += "\n" + location.href;
+  $("btn-cal").href = "https://calendar.google.com/calendar/render?" + [
+    "action=TEMPLATE",
+    "text=" + encodeURIComponent(CONFIG.titulo),
+    "dates=" + utc(alvo) + "/" + utc(fim),
+    "details=" + encodeURIComponent(detalhes),
+    "location=" + encodeURIComponent(CONFIG.local)
+  ].join("&");
+})();
+</script>
+</body>
+</html>
